@@ -1,3 +1,4 @@
+import { Rank } from 'canvacord'
 import { getStats } from '../../lib'
 import { BaseCommand, Command, Message } from '../../Structures'
 
@@ -16,25 +17,27 @@ export default class extends BaseCommand {
         while (users.length < 1) users.push(M.sender.jid)
         const user = users[0]
         const username = user === M.sender.jid ? M.sender.username : this.client.contact.getContact(user).username
-        let pfp: string | undefined
+        let pfpUrl: string | undefined
         try {
-            pfp =
-                (await this.client.profilePictureUrl(user, 'image')) ||
-                'https://upload.wikimedia.org/wikipedia/commons/a/ac/Default_pfp.jpg'
-        } catch (error) {
-            pfp = 'https://upload.wikimedia.org/wikipedia/commons/a/ac/Default_pfp.jpg'
+            pfpUrl = await this.client.profilePictureUrl(user, 'image')
+        } catch {
+            pfpUrl = undefined
         }
+        const pfp = pfpUrl ? await this.client.utils.getBuffer(pfpUrl) : (this.client.assets.get('404') as Buffer)
         const { experience, level, tag } = await this.client.DB.getUser(user)
         const { requiredXpToLevelUp, rank } = getStats(level)
-        const card = await this.client.utils.getBuffer(
-            `https://weeb-api.up.railway.app/rank?pfp=${encodeURIComponent(
-                pfp
-            )}&level=${level}&experience=${experience}&tag=${tag}&username=${encodeURIComponent(
-                username
-            )}&xp=${requiredXpToLevelUp}&rank=${encodeURIComponent(rank)}&progress=${encodeURIComponent(
-                this.client.utils.generateRandomHex()
-            )}&bg=${encodeURIComponent(this.client.utils.generateRandomHex())}`
-        )
+        const card = await new Rank()
+            .setAvatar(pfp)
+            .setLevel(1, '', false)
+            .setCurrentXP(experience)
+            .setRequiredXP(requiredXpToLevelUp)
+            .setProgressBar(this.client.utils.generateRandomHex())
+            .setDiscriminator(tag, this.client.utils.generateRandomHex())
+            .setUsername(username, this.client.utils.generateRandomHex())
+            .setBackground('COLOR', this.client.utils.generateRandomHex())
+            .setRank(1, '', false)
+            .renderEmojis(true)
+            .build({ fontX: 'arial', fontY: 'arial' })
         return void (await M.reply(
             card,
             'image',
