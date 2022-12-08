@@ -10,6 +10,38 @@ import { IArgs } from '../../Types'
 })
 export default class extends BaseCommand {
     public override execute = async (M: Message, { context }: IArgs): Promise<void> => {
+        if (!context) {
+        const sections: proto.Message.ListMessage.ISection[] = []
+            let text = '🤖 *Chatbot Feature*'
+                const rows: proto.Message.ListMessage.IRow[] = []
+                rows.push(
+                    {
+                        title: `Enable Chatbot`,
+                        rowId: `${this.client.config.prefix}chatbot true`
+                    },
+                    {
+                        title: `Disable Chatbot`,
+                        rowId: `${this.client.config.prefix}chatbot false`
+                    }
+                )
+                sections.push({ title: 🤖 Chatbot Feature, rows })
+                text += `\n\nEnable/Disable chatbot in client personal DM.`
+            return void M.reply(
+                text,
+                'text',
+                undefined,
+                undefined,
+                undefined,
+                undefined,
+                undefined,
+                undefined,
+                undefined,
+                {
+                    sections,
+                    buttonText: 'Chatbot Feature'
+                }
+            )
+        }
         const key = context.toLowerCase().trim()
         const action = key === 'true' ? true : false
         await this.client.DB.updateFeature('chatbot', action)
