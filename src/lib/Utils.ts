@@ -5,7 +5,7 @@ import { exec } from 'child_process'
 import { readFile, unlink, writeFile } from 'fs-extra'
 const { uploadByBuffer } = require('telegraph-uploader')
 import regex from 'emoji-regex'
-import getUrls from 'get-urls'
+import * as linkify from 'linkifyjs'
 
 export class Utils {
     public generateRandomHex = (): string => `#${(~~(Math.random() * (1 << 24))).toString(16)}`
@@ -26,7 +26,14 @@ export class Utils {
         return []
     }
 
-    public extractUrls = (content: string): string[] => Array.from(getUrls(content))
+    public extractUrls = (content: string): string[] => {
+        const urls = linkify.find(content)
+        const arr = []
+        for (const url of urls) {
+            arr.push(url.value)
+        }
+        return arr
+    }
 
     public extractEmojis = (content: string): string[] => content.match(regex()) || []
 

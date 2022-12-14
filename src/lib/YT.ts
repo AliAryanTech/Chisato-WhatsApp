@@ -1,4 +1,4 @@
-import ytdl, { validateURL, getInfo } from 'ytdl-core'
+import ytdl, { validateURL, getInfo } from 'youtubedl-core'
 import { createWriteStream, readFile, unlink } from 'fs-extra'
 import { tmpdir } from 'os'
 import { Utils } from '.'
