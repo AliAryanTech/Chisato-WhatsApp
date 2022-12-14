@@ -1,4 +1,3 @@
-import yts from 'yt-search'
 import { Message, Command, BaseCommand } from '../../Structures'
 import { IArgs } from '../../Types'
 
@@ -14,7 +13,7 @@ export default class extends BaseCommand {
     public override execute = async (M: Message, { context }: IArgs): Promise<void> => {
         if (!context) return void M.reply('Provide a query, Baka!')
         const query = context.trim()
-        const { videos } = await yts(query)
+        const videos = await this.client.utils.fetch<YT_Search[]>(`https://weeb-api.up.railway.app/ytsearch?query=${query}`)
         if (!videos || !videos.length) return void M.reply(`No videos found | *"${query}"*`)
         let text = ''
         const length = videos.length >= 10 ? 10 : videos.length
@@ -30,4 +29,15 @@ export default class extends BaseCommand {
             mediaUrl: videos[0].url
         }))
     }
+}
+
+interface YT_Search {
+    title: string
+    author: {
+       name: string
+    }
+    url: string
+    seconds: number
+    thumbnail: string
+    description: string | null
 }
