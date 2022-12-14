@@ -2,7 +2,7 @@ import { BaseCommand, Command, Message } from '../../Structures'
 import { IArgs } from '../../Types'
 
 @Command('chatbot', {
-    description: 'enable/disable private message chat bot feature',
+    description: 'enable/disable private message chat bot feature.',
     category: 'dev',
     usage: 'chatbot true',
     exp: 20,
@@ -11,20 +11,20 @@ import { IArgs } from '../../Types'
 export default class extends BaseCommand {
     public override execute = async (M: Message, { context }: IArgs): Promise<void> => {
         if (!context) {
-        const sections: proto.Message.ListMessage.ISection[] = []
+        const sections = []
             let text = '🤖 *Chatbot Feature*'
-                const rows: proto.Message.ListMessage.IRow[] = []
+                const rows: IRows[] = []
                 rows.push(
                     {
-                        title: `Enable Chatbot`,
+                        title: 'Enable Chatbot',
                         rowId: `${this.client.config.prefix}chatbot true`
                     },
                     {
-                        title: `Disable Chatbot`,
+                        title: 'Disable Chatbot',
                         rowId: `${this.client.config.prefix}chatbot false`
                     }
                 )
-                sections.push({ title: 🤖 Chatbot Feature, rows })
+                sections.push({ title: '🤖 Chatbot Feature', rows })
                 text += `\n\nEnable/Disable chatbot in client personal DM.`
             return void M.reply(
                 text,
@@ -47,4 +47,10 @@ export default class extends BaseCommand {
         await this.client.DB.updateFeature('chatbot', action)
         return void M.reply(`${action === true ? '🟩' : '🟥'} ${action === true ? 'Enabled' : 'Disabled'}`)
     }
+}
+
+interface IRows {
+    title: string
+    rowId: string
+    description?: string
 }
