@@ -14,8 +14,8 @@
 
 ---
 
-<b><details><summary>Heroku Deployment</summary></b>  
-[![Deploy with Heroku](https://www.herokucdn.com/deploy/button.svg "Deploy with Heroku")](https://heroku.com/deploy?template=https://github.com/AliAryanTech/Chisato-WhatsApp/blob/master/ "Deploy with Heroku")
+<b><details><summary>Railway Deployment</summary></b>  
+[![Deploy on Railway](https://railway.app/button.svg)](https://railway.app/new/template/3j9GNw?referralCode=TE7efK)
 </details>
 
 <b><details><summary>Deployment Guide</summary></b>  
