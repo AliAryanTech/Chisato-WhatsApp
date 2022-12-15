@@ -14,8 +14,10 @@
 
 ---
 
-<b><details><summary>Railway Deployment</summary></b>  
+<b><details><summary>Deployment Buttons Here</summary></b>  
+[![Deploy on Repl.it](https://repl.it/badge/github/AliAryanTech/Chisato-WhatsApp)](https://repl.it/github/AliAryanTech/Chisato-WhatsApp)
 [![Deploy on Railway](https://railway.app/button.svg)](https://railway.app/new/template/3j9GNw?referralCode=TE7efK)
+
 </details>
 
 <b><details><summary>Deployment Guide</summary></b>  
