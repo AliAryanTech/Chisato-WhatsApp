@@ -13,7 +13,7 @@ export default class extends BaseCommand {
     public override execute = async (M: Message, { context }: IArgs): Promise<void> => {
         if (!context) return void M.reply('Provide a query, Baka!')
         const query = context.trim()
-        const videos = await this.client.utils.fetch<YT_Search[]>(`https://weeb-api.up.railway.app/ytsearch?query=${query}`)
+        const videos = await this.client.utils.fetch<YT_Search[]>(`https://weeb-api.vercel.app/ytsearch?query=${query}`)
         if (!videos || !videos.length) return void M.reply(`No videos found | *"${query}"*`)
         let text = ''
         const length = videos.length >= 10 ? 10 : videos.length
