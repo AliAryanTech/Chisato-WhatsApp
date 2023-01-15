@@ -17,11 +17,11 @@ export default class extends BaseCommand {
                 rows.push(
                     {
                         title: 'Enable Chatbot',
-                        rowId: `${this.client.config.prefix}chatbot true`
+                        rowId: `${this.client.config.prefix}chatbot enable`
                     },
                     {
                         title: 'Disable Chatbot',
-                        rowId: `${this.client.config.prefix}chatbot false`
+                        rowId: `${this.client.config.prefix}chatbot disable`
                     }
                 )
                 sections.push({ title: '🤖 Chatbot Feature', rows })
