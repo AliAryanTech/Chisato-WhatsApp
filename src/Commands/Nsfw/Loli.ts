@@ -12,7 +12,7 @@ export default class extends BaseCommand {
         const prefix = this.client.config.prefix
         const buttons = [{ buttonId: `${prefix}loli`, buttonText: { displayText: 'NEXT ➡️' }, type: 1 }]
         const buttonMessage = {
-            image: { url: 'https://weeb-api.up.railway.app/loli' },
+            image: { url: 'https://loliapi.com/bg' },
             caption: '*Here, you go!*',
             footer: `${this.client.config.name}`,
             buttons: buttons,
