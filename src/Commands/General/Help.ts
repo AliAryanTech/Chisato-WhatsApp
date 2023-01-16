@@ -18,7 +18,7 @@ export default class extends BaseCommand {
             })).filter((command) => command.data.config.category !== 'dev')
             const { nsfw } = await this.client.DB.getGroup(M.from)
             if (!nsfw) commands = commands.filter(({ data }) => data.config.category !== 'nsfw')
-            const buffer = this.client.assets.get('help') as Buffer
+            const buffer = this.client.assets.get('chisato') as Buffer
             let text = `\n*╭─「 (づ￣ ³￣)づ 」*
 *│ ɴᴀᴍᴇ:* ${this.client.config.name}
 *│ ᴜsᴇʀ: @${M.sender.jid.split('@')[0]}*
@@ -38,7 +38,7 @@ export default class extends BaseCommand {
                 text += `❐ \`\`\`${categoryCommands.join(', ')}\`\`\``
             }
             text += `\n\n⚠️ *Note:* Use ${this.client.config.prefix}help <command_name> for more info of a specific command. Example: *${this.client.config.prefix}help hello*`
-            return void (await M.reply(buffer, 'video', true, undefined, text, [M.sender.jid]))
+            return void (await M.reply(buffer, 'image', undefined, undefined, text, [M.sender.jid]))
         } else {
             const cmd = context.trim().toLowerCase()
             const command = this.handler.commands.get(cmd) || this.handler.aliases.get(cmd)
