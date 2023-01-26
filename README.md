@@ -14,9 +14,9 @@
 ---
 
 <b><details><summary>Deployment Buttons Here</summary></b>  
-[![Deploy on Railway](https://railway.app/button.svg)](https://railway.app/new/template/3j9GNw?referralCode=TE7efK)
+[![Deploy with Heroku](https://www.herokucdn.com/deploy/button.svg "Deploy with Heroku")](https://heroku.com/deploy?template=https://github.com/AliAryanTech/Chisato-WhatsApp/blob/master/ "Deploy with Heroku")
 [![Deploy to Koyeb](https://www.koyeb.com/static/images/deploy/button.svg)](https://app.koyeb.com/apps/deploy?type=docker&image=quay.io/toshi-san001/koyeb-auto-install:main&env%5BPORT%5D=8000&env%5BPREFIX%5D&&env%5BMONGODB%5D&&env%MODS%5D&name=Chisato-WhatsApp)
-
+[![Deploy on Railway](https://railway.app/button.svg)](https://railway.app/new/template/3j9GNw?referralCode=TE7efK)
 </details>
 
 <b><details><summary>Deployment Guide</summary></b>  
