@@ -1,6 +1,6 @@
 import { YT } from '../../lib'
 import { Command, BaseCommand, Message } from '../../Structures'
-import { IArgs } from '../../Types'
+import { IArgs, YT_Search } from '../../Types'
 
 @Command('play', {
     description: 'Plays a song of the given term from YouTube',
@@ -24,11 +24,4 @@ export default class extends BaseCommand {
             mediaUrl: videos[0].url
         }))
     }
-}
-
-interface YT_Search {
-    title: string
-    url: string
-    thumbnail: string
-    description: string | null
 }

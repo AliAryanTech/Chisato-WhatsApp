@@ -1,5 +1,5 @@
 import { Message, Command, BaseCommand } from '../../Structures'
-import { IArgs } from '../../Types'
+import { IArgs, YT_Search } from '../../Types'
 
 @Command('yts', {
     description: 'Searches the video of the given query in YouTube',
@@ -29,15 +29,4 @@ export default class extends BaseCommand {
             mediaUrl: videos[0].url
         }))
     }
-}
-
-interface YT_Search {
-    title: string
-    author: {
-       name: string
-    }
-    url: string
-    seconds: number
-    thumbnail: string
-    description: string | null
 }
