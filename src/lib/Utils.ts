@@ -68,6 +68,41 @@ export class Utils {
         return buffer
     }
 
+    public webpToMp4 = async (webp: Buffer): Promise<Buffer> => {
+        const responseFile = async (form: FormData, buffer = '') => {
+            return axios.post(
+                buffer ? `https://ezgif.com/webp-to-mp4/${buffer}` : 'https://ezgif.com/webp-to-mp4',
+                form,
+                {
+                    headers: { 'Content-Type': `multipart/form-data; boundary=${form.getBoundary()}` }
+                }
+            )
+        }
+        return new Promise(async (resolve, reject) => {
+            const form: any = new FormData()
+            form.append('new-image-url', '')
+            form.append('new-image', webp, { filename: 'blob' })
+            responseFile(form)
+                .then(({ data }) => {
+                    const datafrom: any = new FormData()
+                    const $ = load(data)
+                    const file = $('input[name="file"]').attr('value')
+                    datafrom.append('file', file)
+                    datafrom.append('convert', 'Convert WebP to MP4!')
+                    responseFile(datafrom, file)
+                        .then(async ({ data }) => {
+                            const $ = load(data)
+                            const result = await this.getBuffer(
+                                `https:${$('div#output > p.outfile > video > source').attr('src')}`
+                            )
+                            resolve(result)
+                        })
+                        .catch(reject)
+                })
+                .catch(reject)
+        })
+    }
+
     public gifToMp4 = async (gif: Buffer): Promise<Buffer> => {
         const filename = `${tmpdir()}/${Math.random().toString(36)}`
         await writeFile(`${filename}.gif`, gif)

@@ -11,21 +11,21 @@ import { IArgs } from '../../Types'
 export default class extends BaseCommand {
     public override execute = async (M: Message, { context }: IArgs): Promise<void> => {
         if (!context) {
-        const sections = []
+            const sections = []
             let text = '🤖 *Chatbot Feature*'
-                const rows: IRows[] = []
-                rows.push(
-                    {
-                        title: 'Enable Chatbot',
-                        rowId: `${this.client.config.prefix}chatbot enable`
-                    },
-                    {
-                        title: 'Disable Chatbot',
-                        rowId: `${this.client.config.prefix}chatbot disable`
-                    }
-                )
-                sections.push({ title: '🤖 Chatbot Feature', rows })
-                text += `\n\nEnable/Disable chatbot in client personal DM.`
+            const rows: IRows[] = []
+            rows.push(
+                {
+                    title: 'Enable Chatbot',
+                    rowId: `${this.client.config.prefix}chatbot enable`
+                },
+                {
+                    title: 'Disable Chatbot',
+                    rowId: `${this.client.config.prefix}chatbot disable`
+                }
+            )
+            sections.push({ title: '🤖 Chatbot Feature', rows })
+            text += `\n\nEnable/Disable chatbot in client personal DM.`
             return void M.reply(
                 text,
                 'text',

@@ -181,9 +181,9 @@ export class Message {
     public downloadMediaMessage = async (message: proto.IMessage): Promise<Buffer> => {
         let type = Object.keys(message)[0] as MessageType
         let msg = message[type as keyof typeof message]
-        if (type === 'buttonsMessage' || type === 'viewOnceMessage') {
-            if (type === 'viewOnceMessage') {
-                msg = message.viewOnceMessage?.message
+        if (type === 'buttonsMessage' || type === 'viewOnceMessageV2') {
+            if (type === 'viewOnceMessageV2') {
+                msg = message.viewOnceMessageV2?.message
                 type = Object.keys(msg || {})[0] as MessageType
             } else type = Object.keys(msg || {})[1] as MessageType
             msg = (msg as any)[type]
