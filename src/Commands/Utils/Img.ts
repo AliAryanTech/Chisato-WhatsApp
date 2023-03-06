@@ -17,7 +17,7 @@ export default class command extends BaseCommand {
         try {
             const result = animated
                 ? await this.client.utils.webpToMp4(buffer)
-                : await this.client.utils.webpToImage(buffer)
+                : await this.client.utils.webpToPng(buffer)
             return void (await M.reply(result, animated ? 'video' : 'image', animated))
         } catch (error) {
             return void (await M.reply('Conversion failed as animated stickers are not supported'))

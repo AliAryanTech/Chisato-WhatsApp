@@ -4,6 +4,8 @@ import { promisify } from 'util'
 import { exec } from 'child_process'
 import { readFile, unlink, writeFile } from 'fs-extra'
 const { uploadByBuffer } = require('telegraph-uploader')
+import FormData from 'form-data'
+import { load } from 'cheerio'
 import regex from 'emoji-regex'
 import * as linkify from 'linkifyjs'
 
