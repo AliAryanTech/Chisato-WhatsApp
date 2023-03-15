@@ -45,7 +45,7 @@ export default class extends BaseCommand {
         const key = context.toLowerCase().trim()
         const action = key === 'enable' ? true : false
         await this.client.DB.updateFeature('chatbot', action)
-        return void M.reply(`${action === true ? '🟩' : '🟥'} ${action === true ? 'Enabled' : 'Disabled'}`)
+        return void M.reply(`${action === true ? '🟩 Enabled' : '🟥 Disabled'}`)
     }
 }
 
