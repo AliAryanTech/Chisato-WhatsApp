@@ -31,6 +31,7 @@ export class Client extends (EventEmitter as new () => TypedEventEmitter<Events>
         if (!process.env.MONGO_URI) {
             throw new Error('No MongoDB URI provided')
         }
+        set('strictQuery', false)
         await connect(process.env.MONGO_URI)
         this.log('Connected to the Database')
         const { useDatabaseAuth } = new AuthenticationFromDatabase(this.config.session)
