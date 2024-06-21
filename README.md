@@ -41,10 +41,10 @@
 
 > Chisato-WhatsApp is free and open-source software licensed under the [GNU Affero General Public License v3.0](https://github.com/AliAryanTech/Chisato-WhatsApp/blob/master/LICENSE)
 
-## Support 🍪
+## Contact me 🍪
 
-<a href="https://chat.whatsapp.com/IDXPYkGVTjw6GbSnMbVNcK">
-  <img src="https://img.shields.io/badge/Support_Group-0a0a0a?style=for-the-badge&logo=whatsapp&logoColor=white">
+<a href="https://wa.me/923224875937">
+  <img src="https://img.shields.io/badge/Support_Owner-0a0a0a?style=for-the-badge&logo=whatsapp&logoColor=white">
 </a>
 
 </br>
